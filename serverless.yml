@@ -1,0 +1,48 @@
+service: hello-world-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-west-2
+  profile: default
+  memorySize: 256 # optional, in MB, default is 1024
+  stage: dev
+  usagePlan:
+  - free:
+      quota:
+        limit: 5000
+        offset: 2
+        period: MONTH
+      throttle:
+        burstLimit: 200
+        rateLimit: 100
+  - paid:
+      quota:
+        limit: 50000
+        offset: 1
+        period: MONTH
+      throttle:
+        burstLimit: 2000
+        rateLimit: 1000
+  apiKeys:
+    - free:
+      - freeAPIKey1
+      - freeAPIKey2
+    - paid:
+      - paidAPIKey1
+      - paidAPIKey2
+
+plugins:
+  - serverless-offline
+
+functions:
+  hello:
+    handler: handler.handle # required, handler set in AWS Lambda
+    name: "${self:service}-${self:provider.stage}" # optional, Deployed Lambda name
+    description: "slspress offline example"
+    events:
+      - http:
+          path: hello
+          method: get
+          cors: true
+          private: true
