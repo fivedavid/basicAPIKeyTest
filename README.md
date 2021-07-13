@@ -1,5 +1,9 @@
 Basic API with API Keys including quota and throttling using serverless framework.
 
+## docs
+https://sls.zone/pages/learn/testing-with-serverless/
+https://www.serverless.com
+
 ## Prerequisites
 serverles cli - https://www.serverless.com/framework/docs/getting-started/
 
