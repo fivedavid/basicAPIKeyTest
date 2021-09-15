@@ -1,4 +1,4 @@
-Basic API with API Keys including quota and throttling using serverless framework.
+ Basic API with API Keys including quota and throttling using serverless framework.
 
 ## docs
 https://sls.zone/pages/learn/testing-with-serverless/
